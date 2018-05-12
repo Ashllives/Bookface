@@ -1,0 +1,17 @@
+<div><h2>All Users</h2></div>
+<hr><br>
+
+<div>
+  <% @users.each do |user| %>
+    <ul>
+      <li>
+        <%= user.name %> 
+        <% if current_user.following?(user) %>
+          <%= link_to 'Unfriend', unfriend_user_path(user), method: :post %>
+        <% else %>
+          <%= link_to 'Be Friends', befriend_user_path(user), method: :post %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>

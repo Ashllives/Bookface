@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <div class="move-right">
+    <p>Welcome, <%= current_user.name %>!</p>
+  </div><br><br>
+
+  <p>Say something to your friends:</p>
+  <%= render partial: "input", locals: {url: posts_url} %>
+
+  <p>Your Stories</p>
+
+  <% @posts.each do |post| %>
+    <div class="post-container">
+      <%= post.contents %><br>
+      <i>by <%= User.find(post.user_id).name %> on <%= post.created_at.strftime('%d %B %Y, %H:%M') %></i><br>
+      <%= link_to 'Delete', delete_post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %><br>
+      <p>Post a comment:</p>
+      <div>
+        <%= render partial: "input", locals: {url: comments_url(post: post)} %> 
+      </div>  
+
+      <div class="post-container">    
+      <p>Comments:</p>
+        <% post.comments.all.each do |c| %>
+            <%= c.contents %><br>
+            <i>by <%= User.find(c.user_id).name %> on <%= c.created_at.strftime('%d %B %Y, %H:%M') %></i><br>
+            <%= link_to 'Delete', delete_comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div></div>
+  <% end %>
+<% end %>
