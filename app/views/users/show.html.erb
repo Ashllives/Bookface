@@ -5,4 +5,8 @@
   Username: <%= @user.username %><br>
   Followed friends: <%= @user.following.count %><br>
   Following friends: <%= @user.followers.count %>
+</div><br><br>
+<div>
+  <%= link_to 'Edit Profile', edit_user_registration_path %> | 
+  <%= link_to 'Back', posts_path %>
 </div>
