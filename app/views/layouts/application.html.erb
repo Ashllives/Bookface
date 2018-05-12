@@ -25,10 +25,12 @@
         </ul>
       </div>
       <div class="main">
-        <% if notice %>
-          <p><%= notice %></p>
-        <% else %>
-          <p><%= alert %></p>
+        <% unless flash.empty? %>
+          <% if notice %>
+            <div class="notice"><%= notice %></div>
+          <% else %>
+            <div class="alert"><%= alert %></div>
+          <% end %>
         <% end %>
           <%= yield %>
       </div>

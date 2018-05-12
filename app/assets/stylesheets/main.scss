@@ -40,3 +40,19 @@ body {
 .menu, .main {
   padding: 1.25rem 1rem;
 }
+
+.notice {
+  padding: 1em;
+  background-color: green;
+  color: white;
+}
+
+.alert {
+  padding: 1em;
+  background-color: red;
+  color: white;
+}
+
+.spacing {
+  margin: 1em;
+}
